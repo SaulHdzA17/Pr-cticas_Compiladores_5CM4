@@ -34,13 +34,10 @@ public class ASDI implements Parser{
 
             if( this.hayErrores ) return false;//Se checa que no haya errores
 
-            //Comprobar que item es un noTerminal o un termina (alguin tipo de Token)
-            //this.ejecutar(item);
-            //if( ( this.auxItem.get(0).tipo == preanalisis.tipo ) && ( item != preanalisis.lexema ) ){
+            //Comprobar que item es un noTerminal
             if( ( item.equals("Q") )  || ( item.equals("D") )  || ( item.equals("P") ) || ( item.equals("A") )  || ( item.equals("A1") ) ||
                 ( item.equals("A2") ) || ( item.equals("A3") ) || ( item.equals("T") ) || ( item.equals("T1") ) || ( item.equals("T2") ) ||
                 ( item.equals("T3") ) ){
-                
 
                 System.out.println("****Primer caso****");
                 //Concideramos que es un No terminal
@@ -57,7 +54,6 @@ public class ASDI implements Parser{
                 System.out.println( "Item " + this.item );
                 System.out.println("------Fin primer caso------"); 
 
-            //}else if( this.auxItem.get(0).tipo == preanalisis.tipo ){
             }else if( ( ( item.equals("select") ) && ( this.preanalisis.tipo.equals(TipoToken.SELECT) ) ) 
                    || ( ( item.equals("from") )   && ( this.preanalisis.tipo.equals(TipoToken.FROM) ) ) 
                    || ( ( item.equals("distinc")) && ( this.preanalisis.tipo.equals(TipoToken.DISTINCT) ) )
@@ -67,21 +63,27 @@ public class ASDI implements Parser{
                    || ( ( item.equals("id") )     && ( this.preanalisis.tipo.equals(TipoToken.IDENTIFICADOR) ) )
                    || ( ( item.equals("$") )      && ( this.preanalisis.tipo.equals(TipoToken.EOF) ) ) ){    
                 
-
-                System.out.println("*****Segundo caso******");
                 //Si son iguales
+                
+                System.out.println("*****Segundo caso******");
+                System.out.println("Reapuntamos el inico de la pila y el siguiente token");
+                System.out.println("Item: " + item + " Preanalisis: " + preanalisis );
+                
                 item = pila.pop(); //Sacamos de la pila
                 i++;//Avanzamos uno en la lista de tokens
                 this.preanalisis = this.tokens.get(i); //Tomamos el siguiente token 
-                System.out.println("Item: " + item + " Preanalisis:  " + preanalisis );
+                System.out.println("Item: " + item + " Preanalisis: " + preanalisis );
                 System.out.println("------Fin segundo caso------"); 
 
             }else if( item.equals("E") ){
 
-                System.out.println("*****Terce caso****");
                 //No se inserta nada en la pila (se saca el tope de la pila)
+
+                System.out.println("*****Terce caso****");
+                System.out.println("Reapuntamos el inico de la pila");
+                System.out.println("Item: " + item + " Preanalisis: " + preanalisis );
                 item = pila.pop(); //Sacamos de la pila
-                System.out.println("Item: " + item + " Preanalisis:  " + preanalisis );
+                System.out.println("Item: " + item + " Preanalisis: " + preanalisis );
                 System.out.println("------Fin tercer caso------"); 
 
 
@@ -90,8 +92,8 @@ public class ASDI implements Parser{
                 System.out.println("*******Caso de error******");
                 //La istaxis no es correcta
                 this.hayErrores = true;
-                System.out.println("La sintaxis es erroena.Token:" + this.preanalisis.lexema + ".Tipo: " + this.preanalisis.tipo + ".Posicion: " + this.preanalisis.posicion );
-                System.out.println("Item: " + item + " Preanalisis:  " + preanalisis );
+                System.out.println("La sintaxis es incorrecta.Token: " + this.preanalisis.lexema + ".Tipo: " + this.preanalisis.tipo + ".Posicion: " + this.preanalisis.posicion );
+                System.out.println("Item: " + item + " Preanalisis: " + preanalisis );
                 System.out.println("------Fin caso de error------");
 
             }else{
@@ -288,24 +290,5 @@ public class ASDI implements Parser{
         return invertida;
 
     }
-
-    /*private void ejecutar(String source){
-        //Metodo para determinar si item un terminal o un noTerminal
-        Scanner scanner = new Scanner(source);
-        this.auxItem = scanner.scanTokens();
-      
-    }
-
-    private void match(TipoToken tt){
-        if(preanalisis.tipo == tt){
-            i++;
-            preanalisis = tokens.get(i);
-        }
-        else{
-            hayErrores = true;
-            System.out.println("Error encontrado");
-        }
-
-    }*/
 
 }
