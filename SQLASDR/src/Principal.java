@@ -5,7 +5,7 @@
  * Alumnos
  *  Castro Rendón Gibhram
  *  Hernandez Alosno Saúl
- *  Rendon Carmona Ever Eduardo
+ *  Rendon Carmona Ever
  * 
  * Grupo
  *  5CM4
