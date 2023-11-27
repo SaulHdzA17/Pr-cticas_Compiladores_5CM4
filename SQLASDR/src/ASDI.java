@@ -42,7 +42,7 @@ public class ASDI implements Parser{
                 System.out.println("****Primer caso****");
                 //Concideramos que es un No terminal
                 //Buscar indices
-                System.out.println("Indices\nItem: " + item + " Preanalisis:  " + preanalisis );
+                System.out.println("Indices\nItem: " + item + " Preanalisis: " + preanalisis );
                 this.buscarIndices(item, this.preanalisis);
                 if(hayErrores) break;//Se checa que los indices se hayan encontrado
                 //Asignamos produccion
