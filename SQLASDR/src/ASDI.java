@@ -8,7 +8,7 @@ public class ASDI implements Parser{
     private Token preanalisis;
     private final List<Token> tokens;
     private final Tabla ta = new Tabla();
-    private String produccion, item;
+    private String produccion = "", item = "";
     //private static List<Token> auxItem;
     private Stack<String> pila = new Stack<>(); //Decalracion de la pila
         
@@ -108,6 +108,11 @@ public class ASDI implements Parser{
                 return false;
 
             }
+
+            //Imprimir pila
+            System.out.println(">>>>>>>>>>Imprimir pila<<<<<<<<<");
+            for (String elemento : pila) System.out.println(elemento);
+          
             
         }
 
@@ -233,7 +238,7 @@ public class ASDI implements Parser{
 
     public void addPilaInv(){
 
-         System.out.println("+++++++++++Inicio de addPilaInv++++++++++++");
+        System.out.println("+++++++++++Inicio de addPilaInv++++++++++++");
         //Añadimos a la pila de manera inversa
         char c; //Caracter para distinuir las palabras de la producción
         String aux = ""; //Para insertas las palabras en las listas
@@ -246,7 +251,7 @@ public class ASDI implements Parser{
            
             c = this.produccion.charAt(x);//Len asignamos el ultimo caracter del lexema
 
-            if ( c == ' ' || c == this.produccion.charAt(0) ) {
+            if ( ( c == ' ' ) || ( x == 0 ) ) {
                 
                 //Se debe invertir y guardad
 
