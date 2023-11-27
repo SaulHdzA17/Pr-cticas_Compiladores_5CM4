@@ -1,6 +1,6 @@
 /*
  * 
- * Analizardor Sintactico Desebdete Iteratipo
+ * Analizardor Sintactico Desendete Iteratipo
  * 
  * Alumnos
  *  Castro Rendón Gibhram
