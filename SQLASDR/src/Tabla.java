@@ -1,30 +1,7 @@
 public class Tabla {
     
     public String [] [] tabla = new String [ 11 ] [ 8 ];
-
-    /*
-     * 
-     * 
-     * 
-     *                     select D from T  distinct P | P    * | A     A2 A1   , A | Ɛ   id A3   . id | Ɛ    T2 T1 , T | Ɛ
-     *         this.tabla [ x ] [ y ]  
-     *                            0        1      2     3   4   5   6   7
-     *                          select   from  distinc  *   ,   .   id  $(EOF) 
-     *         0            Q  
-     *         1            D  
-     *         2            P
-     *         3            A
-     *         4            A1
-     *         5            A2
-     *         6            A3
-     *         7            T
-     *         8            T1
-     *         9            T2
-     *         10           T3
-     * 
-     * 
-     */
-    
+     
      public Tabla(){
         
         /********* Producciones con Q **********/

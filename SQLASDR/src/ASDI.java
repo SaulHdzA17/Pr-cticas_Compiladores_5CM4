@@ -47,7 +47,7 @@ public class ASDI implements Parser{
                 if(hayErrores) break;//Se checa que los indices se hayan encontrado
                 //Asignamos produccion
                 this.Produccion();
-                System.out.println("Produccion: " + produccion);
+                System.out.println("Produccion: " + item + " -> " + produccion);
                 //Agregamos a la pila de manera inversa
                 this.addPilaInv();
                 this.item = pila.pop();//Reapuntamos al tope de la pila
@@ -56,7 +56,7 @@ public class ASDI implements Parser{
 
             }else if( ( ( item.equals("select") ) && ( this.preanalisis.tipo.equals(TipoToken.SELECT) ) ) 
                    || ( ( item.equals("from") )   && ( this.preanalisis.tipo.equals(TipoToken.FROM) ) ) 
-                   || ( ( item.equals("distinc")) && ( this.preanalisis.tipo.equals(TipoToken.DISTINCT) ) )
+                   || ( ( item.equals("distinct")) && ( this.preanalisis.tipo.equals(TipoToken.DISTINCT) ) )
                    || ( ( item.equals("*") )      && ( this.preanalisis.tipo.equals(TipoToken.ASTERISCO) ) ) 
                    || ( ( item.equals(",") )      && ( this.preanalisis.tipo.equals(TipoToken.COMA) ) )
                    || ( ( item.equals("." ))      && ( this.preanalisis.tipo.equals(TipoToken.PUNTO) ) )
@@ -113,7 +113,8 @@ public class ASDI implements Parser{
 
             //Imprimir pila
             System.out.println(">>>>>>>>>>Imprimir pila<<<<<<<<<");
-            for (String elemento : pila) System.out.println(elemento);
+            for (String elemento : pila) System.out.println("->" + elemento);
+            System.out.println("Tope de la pila: " + item);
           
             
         }
